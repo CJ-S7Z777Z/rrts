@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gyro Ball Game</title>
+<style>
+body { margin: 0; overflow: hidden; }
+canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let ballX = canvas.width / 2;
+let ballY = canvas.height / 4;
+let ballRadius = 20;
+let gravity = 0.5;
+let speedX = 0;
+let speedY = 0;
+
+function drawBall() {
+  ctx.beginPath();
+  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+  ctx.fillStyle = "red";
+  ctx.fill();
+  ctx.closePath();
+}
+
+function drawGoal() {
+  ctx.fillStyle = "blue";
+  ctx.fillRect(canvas.width / 2 - 50, canvas.height - 50, 100, 50);
+}
+
+function handleGyroData(event) {
+  // Обработка данных гироскопа.  Здесь используется упрощенная модель.
+  // В реальной игре нужно будет настроить чувствительность и учитывать разные оси.
+  speedX += event.beta / 10; // beta - вращение по оси Y
+  speedY += event.gamma / 10; // gamma - вращение по оси X
+
+  // Ограничение скорости, чтобы мяч не двигался слишком быстро
+  speedX = Math.max(-5, Math.min(5, speedX));
+  speedY = Math.max(-5, Math.min(5, speedY));
+}
+
+
+function update() {
+  ballX += speedX;
+  ballY += speedY;
+  speedY += gravity;
+
+  // Проверка столкновений со стенами
+  if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
+    speedX *= -0.8; // Упругое столкновение со стенами
+  }
+  if (ballY + ballRadius > canvas.height) {
+    ballY = canvas.height - ballRadius;
+    speedY *= -0.8; // Упругое столкновение с полом
+  }
+
+
+  //Проверка попадания в цель
+  if (ballY + ballRadius > canvas.height - 50 && ballX > canvas.width / 2 - 50 && ballX < canvas.width / 2 + 50) {
+    alert("Вы попали!");
+    resetBall();
+  }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBall();
+  drawGoal();
+  requestAnimationFrame(update);
+}
+
+
+function resetBall() {
+  ballX = canvas.width / 2;
+  ballY = canvas.height / 4;
+  speedX = 0;
+  speedY = 0;
+}
+
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', handleGyroData);
+} else {
+  console.log("Гироскоп не поддерживается.");
+}
+
+update();
+
+</script>
+</body>
+</html>
+
