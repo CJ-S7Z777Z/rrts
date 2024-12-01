@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TON P2P Биржа</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TON P2P Биржа</h1>
+            <div id="ton-connect"></div>
+        </header>
+        <main>
+            <section class="actions">
+                <button id="send-transaction-btn" class="btn">Отправить транзакцию</button>
+            </section>
+            <div id="transaction-status" class="status"></div>
+        </main>
+        <footer>
+            <p>&copy; 2024 TON P2P Биржа</p>
+        </footer>
+    </div>
+
+    <!-- TON Connect UI Script -->
+    <script src="https://unpkg.com/@tonconnect/ui/dist/tonconnect-ui.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
