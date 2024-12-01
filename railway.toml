@@ -1,0 +1,9 @@
+[build]
+  builder = "heroku/buildpacks:20"
+
+[deploy]
+  command = "node server.js"
+  restart_policy = "on-failure"
+
+[env]
+  NODE_ENV = "production"
