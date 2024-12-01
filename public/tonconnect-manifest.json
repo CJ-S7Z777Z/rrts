@@ -1,11 +1,11 @@
 {
     "manifest_version": "1.0",
-    "app_url": "https://<YOUR_APP_URL>",
+    "app_url": "https://rrts-production.up.railway.app/",
     "name": "TON P2P Биржа",
     "description": "P2P биржа для покупки и продажи TON токенов.",
-    "icon": "https://<YOUR_APP_URL>/icon.png", 
+    "icon": "https://rrts-production.up.railway.app/icon.jpg", 
     "redirect_urls": [
-        "https://<YOUR_APP_URL>/callback"
+        "https://rrts-production.up.railway.app/callback"
     ],
     "chain_id": 1
 }
