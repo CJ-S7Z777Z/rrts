@@ -1,0 +1,11 @@
+{
+    "manifest_version": "1.0",
+    "app_url": "https://<YOUR_APP_URL>",
+    "name": "TON P2P Биржа",
+    "description": "P2P биржа для покупки и продажи TON токенов.",
+    "icon": "https://<YOUR_APP_URL>/icon.png", 
+    "redirect_urls": [
+        "https://<YOUR_APP_URL>/callback"
+    ],
+    "chain_id": 1
+}
