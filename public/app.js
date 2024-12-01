@@ -1,6 +1,6 @@
 // Инициализация TON Connect UI
 const tonConnectUI = new TonConnectUI.TonConnectUI({
-    manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json', // Замените <YOUR_APP_URL> на ваш URL
+    manifestUrl: 'https://rrts-production.up.railway.app/tonconnect-manifest.json', // Замените <YOUR_APP_URL> на ваш URL
     buttonRootId: 'ton-connect'
 });
 
@@ -45,7 +45,7 @@ document.getElementById('send-transaction-btn').addEventListener('click', async 
         const transaction = {
             messages: [
                 {
-                    address: "EQABa48hjKzg09hN_HjxOic7r8T1PleIy1dRd8NvZ3922MP0", // Адрес получателя
+                    address: "EQBDT2vmEdKWRNVcdHiRP3k2JXMsfS5VU-GguXIc2UUBV2tk", // Адрес получателя
                     amount: "20000000" // Сумма в nanotons
                 }
             ]
